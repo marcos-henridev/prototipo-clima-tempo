@@ -9,7 +9,11 @@ interface HomeProps {
   children?: ReactNode;
 }
 
-export default function Home({ onBuscar, carregando = false, children }: HomeProps) {
+export default function Home({
+  onBuscar,
+  carregando = false,
+  children,
+}: HomeProps) {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const cidade = new FormData(e.currentTarget).get("cidade");
@@ -57,7 +61,7 @@ export default function Home({ onBuscar, carregando = false, children }: HomePro
               >
                 <circle cx="11" cy="11" r="7" />
                 <line x1="16.5" y1="16.5" x2="21" y2="21" />
-              <svg>
+              </svg>
             </Button>
           }
         />
