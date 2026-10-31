@@ -27,14 +27,14 @@ Depois, abra [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Comando | O que faz |
-|---|---|
-| `pnpm dev` | Servidor de desenvolvimento |
-| `pnpm build` | Build de produção |
-| `pnpm start` | Roda o build de produção |
-| `pnpm lint` | ESLint |
-| `pnpm test` | Roda os testes |
-| `pnpm test:watch` | Testes em modo watch |
+| Comando           | O que faz                   |
+| ----------------- | --------------------------- |
+| `pnpm dev`        | Servidor de desenvolvimento |
+| `pnpm build`      | Build de produção           |
+| `pnpm start`      | Roda o build de produção    |
+| `pnpm lint`       | ESLint                      |
+| `pnpm test`       | Roda os testes              |
+| `pnpm test:watch` | Testes em modo watch        |
 
 ## Estrutura
 
@@ -74,3 +74,7 @@ pnpm test
 ## CI
 
 O workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) roda a cada push na `main` e em cada pull request. Ele faz lint, checagem de tipos, testes e build.
+
+# Link do site no ar
+
+## [https://clima-tempo.vercel.app/](https://clima-tempo.vercel.app/)
