@@ -19,9 +19,7 @@ export default function Home({ onBuscar, carregando = false, children }: HomePro
   return (
     <section className={styles.home} aria-labelledby="home-title">
       <header className={styles.header}>
-        <Text variant="eyebrow" className={styles.eyebrow}>
-          Previsão do tempo
-        </Text>
+        <Text variant="eyebrow">Previsão do tempo</Text>
         <Text variant="title" as="h1" id="home-title" className={styles.title}>
           Como está o clima?
         </Text>

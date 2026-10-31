@@ -15,8 +15,9 @@
   align-items: center;
   gap: 0.3rem;
   padding: 0.6rem 0.2rem;
-  border: 1px solid #e6edf7;
-  background: #fff;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 7px;
+  background: rgb(255 255 255 / 4%);
   scroll-snap-align: start;
 }
 
@@ -25,12 +26,12 @@
 }
 
 .temperatura {
-  color: #263d62;
+  color: #f1f5f9;
   font-size: 0.9rem;
 }
 
 .chuva {
-  color: #2563eb;
+  color: #60a5fa;
   font-size: 0.65rem;
   white-space: nowrap;
 }

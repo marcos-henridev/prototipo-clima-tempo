@@ -10,11 +10,6 @@
   color: #f1f5f9;
 }
 
-/* textos do cabeçalho ficam sobre o fundo escuro */
-.header .eyebrow {
-  color: #7aa2e3;
-}
-
 .header .title {
   margin-top: 0.55rem;
   font-size: 2.4rem;
@@ -22,7 +17,6 @@
 
 .header .intro {
   margin-top: 0.4rem;
-  color: #94a3b8;
   font-size: 1rem;
 }
 
