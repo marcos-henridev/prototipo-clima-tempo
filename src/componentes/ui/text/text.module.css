@@ -1,0 +1,28 @@
+.eyebrow {
+  color: #5273a5;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 1.7rem;
+  letter-spacing: -0.045em;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  letter-spacing: -0.03em;
+}
+
+.body {
+  color: #64748b;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.caption {
+  color: #718096;
+  font-size: 0.78rem;
+}

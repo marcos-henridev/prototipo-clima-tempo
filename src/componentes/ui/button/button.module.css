@@ -1,0 +1,45 @@
+.button {
+  display: inline-grid;
+  flex-shrink: 0;
+  place-items: center;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.primary {
+  color: #fff;
+  background: #2563eb;
+}
+
+.primary:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.ghost {
+  color: #2563eb;
+  background: transparent;
+}
+
+.ghost:hover:not(:disabled) {
+  background: rgb(37 99 235 / 8%);
+}
+
+.md {
+  padding: 0.6rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.4rem;
+  line-height: 1;
+}

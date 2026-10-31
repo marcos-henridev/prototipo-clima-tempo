@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Clima Tempo
 
-## Getting Started
+App web para consultar o clima atual de uma cidade. Você digita o nome da cidade e ele mostra a temperatura e as condições do tempo naquele momento.
 
-First, run the development server:
+> 🚧 **Em desenvolvimento.** A interface e o hook de busca (`useClima`) estão prontos e testados, mas ainda não foram ligados um ao outro na tela.
+
+## Tecnologias
+
+- [Next.js 16](https://nextjs.org) (App Router) + [React 19](https://react.dev) + TypeScript
+- CSS Modules
+- [Open-Meteo](https://open-meteo.com): API de clima e geocoding gratuita, **sem chave de API**
+- [Jest](https://jestjs.io) + [Testing Library](https://testing-library.com)
+- [pnpm](https://pnpm.io)
+
+## Como rodar
+
+Pré-requisitos: Node.js 20+ e pnpm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Depois, abra [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Comando | O que faz |
+|---|---|
+| `pnpm dev` | Servidor de desenvolvimento |
+| `pnpm build` | Build de produção |
+| `pnpm start` | Roda o build de produção |
+| `pnpm lint` | ESLint |
+| `pnpm test` | Roda os testes |
+| `pnpm test:watch` | Testes em modo watch |
 
-## Learn More
+## Estrutura
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                  # Rotas do Next (layout e página inicial)
+├── componentes/
+│   ├── home/             # Tela principal
+│   └── ui/               # Componentes reaproveitáveis: Button, Input, Card, Text
+└── data/
+    └── hookcustumer.ts   # Hook useClima: busca a cidade e o clima na Open-Meteo
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Os componentes de `ui` podem ser importados todos de um lugar só:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```tsx
+import { Button, Card, Input, Text } from "@/componentes/ui";
+```
 
-## Deploy on Vercel
+## Como a busca funciona
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+O `useClima(cidade)` faz duas chamadas à Open-Meteo:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Geocoding:** converte o nome da cidade em latitude e longitude.
+2. **Forecast:** busca a temperatura, o código do tempo (`weather_code`) e se é dia ou noite.
+
+O hook devolve `{ dados, carregando, erro }`. Quando a cidade muda, a busca anterior é cancelada.
+
+## Testes
+
+Cada arquivo de teste (`*.test.ts(x)`) fica ao lado do arquivo que ele testa. Nos testes do hook, o `fetch` é simulado, então nenhum teste chama a API de verdade.
+
+```bash
+pnpm test
+```
