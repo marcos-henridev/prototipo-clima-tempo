@@ -1,22 +1,20 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Home from "./home";
 
 describe("Home", () => {
-  beforeEach(() => render(<Home />));
-
-  it("mostra o título principal", () => {
+  it("mostra o título principal e nomeia a seção por ele", () => {
+    render(<Home onBuscar={jest.fn()} />);
     expect(
       screen.getByRole("heading", { level: 1, name: "Como está o clima?" }),
     ).toBeInTheDocument();
-  });
-
-  it("nomeia a seção pelo título", () => {
     expect(
       screen.getByRole("region", { name: "Como está o clima?" }),
     ).toBeInTheDocument();
   });
 
   it("mostra a busca com campo e botão acessíveis", () => {
+    render(<Home onBuscar={jest.fn()} />);
     const search = screen.getByRole("search");
     expect(search).toContainElement(
       screen.getByRole("searchbox", { name: "Buscar cidade" }),
@@ -26,9 +24,32 @@ describe("Home", () => {
     );
   });
 
-  it("mostra o card de clima atual", () => {
-    expect(
-      screen.getByRole("article", { name: "Clima atual" }),
-    ).toBeInTheDocument();
+  it("chama onBuscar com a cidade ao clicar no botão", async () => {
+    const onBuscar = jest.fn();
+    render(<Home onBuscar={onBuscar} />);
+    await userEvent.type(screen.getByRole("searchbox"), "Recife");
+    await userEvent.click(screen.getByRole("button", { name: "Pesquisar cidade" }));
+    expect(onBuscar).toHaveBeenCalledWith("Recife");
+  });
+
+  it("chama onBuscar ao apertar Enter", async () => {
+    const onBuscar = jest.fn();
+    render(<Home onBuscar={onBuscar} />);
+    await userEvent.type(screen.getByRole("searchbox"), "Natal{Enter}");
+    expect(onBuscar).toHaveBeenCalledWith("Natal");
+  });
+
+  it("desabilita o botão enquanto carrega", () => {
+    render(<Home onBuscar={jest.fn()} carregando />);
+    expect(screen.getByRole("button", { name: "Pesquisar cidade" })).toBeDisabled();
+  });
+
+  it("renderiza o conteúdo de resultado", () => {
+    render(
+      <Home onBuscar={jest.fn()}>
+        <p>Resultado</p>
+      </Home>,
+    );
+    expect(screen.getByText("Resultado")).toBeInTheDocument();
   });
 });

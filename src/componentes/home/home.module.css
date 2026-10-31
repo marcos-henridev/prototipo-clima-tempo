@@ -1,83 +1,76 @@
+/* Desktop: título à esquerda, busca à direita e resultados em duas colunas */
 .home {
-  display: flex;
-  min-height: 100%;
-  flex-direction: column;
-  padding: 3.25rem 1.25rem 1.5rem;
-  color: #172554;
-  background:
-    radial-gradient(ellipse at 100% 0%, rgb(191 219 254 / 65%), transparent 42%),
-    linear-gradient(160deg, #f8fbff 0%, #e8f2ff 100%);
-}
-
-.header {
-  margin-bottom: 1.5rem;
-}
-
-.title {
-  margin-top: 0.55rem;
-}
-
-.intro {
-  margin-top: 0.4rem;
-}
-
-.weatherCard {
-  margin-top: 1.3rem;
-}
-
-.location {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.weatherIcon {
-  font-size: 2.7rem;
-}
-
-.temperature {
-  padding: 1rem 0 1.15rem;
-}
-
-.temperature span {
-  font-size: 4.3rem;
-  font-weight: 300;
-  letter-spacing: -0.09em;
-  line-height: 1;
-}
-
-.temperature p {
-  margin-top: 0.25rem;
-  color: #45618a;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.details {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  padding-top: 1rem;
-  border-top: 1px solid #e6edf7;
+  grid-template-columns: 1fr minmax(280px, 380px);
+  column-gap: 2rem;
+  align-items: end;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  color: #f1f5f9;
 }
 
-.details > div {
-  min-width: 0;
-  text-align: center;
+/* textos do cabeçalho ficam sobre o fundo escuro */
+.header .eyebrow {
+  color: #7aa2e3;
 }
 
-.detailIcon {
+.header .title {
+  margin-top: 0.55rem;
+  font-size: 2.4rem;
+}
+
+.header .intro {
+  margin-top: 0.4rem;
+  color: #94a3b8;
   font-size: 1rem;
 }
 
-.details p {
-  margin-top: 0.35rem;
-  color: #7a8aa3;
-  font-size: 0.68rem;
+.resultado {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(280px, 1fr) 2fr;
+  gap: 1.25rem;
+  align-items: start;
+  margin-top: 2.5rem;
 }
 
-.details strong {
-  display: block;
-  margin-top: 0.25rem;
-  color: #263d62;
-  font-size: 0.82rem;
+.resultado > * {
+  min-width: 0;
+}
+
+/* sem a previsão por hora, o card do clima ocupa a linha toda */
+.resultado > :only-child {
+  grid-column: 1 / -1;
+}
+
+/* Mobile: layout em uma coluna (o antigo formato de celular) */
+@media (max-width: 700px) {
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 3.25rem 1.25rem 1.5rem;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+  }
+
+  .header .title {
+    font-size: 1.7rem;
+  }
+
+  .header .intro {
+    font-size: 0.86rem;
+  }
+
+  /* stretch: os cards ocupam toda a largura e a lista de horas rola dentro do card */
+  .resultado {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-top: 1.3rem;
+  }
 }

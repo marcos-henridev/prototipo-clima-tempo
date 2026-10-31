@@ -20,6 +20,23 @@
   border-color: #93b4f0;
 }
 
+/* com action, o botão fica colado na borda direita, na altura toda do campo */
+.comAction {
+  padding-right: 0;
+}
+
+.action {
+  display: flex;
+  align-self: stretch;
+  margin-left: 0.5rem;
+  border-left: 1px solid rgb(148 163 184 / 25%);
+}
+
+.field .action > * {
+  width: 3.25rem;
+  height: auto;
+}
+
 .input {
   width: 100%;
   min-width: 0;
@@ -33,6 +50,13 @@
 
 .input::placeholder {
   color: #94a3b8;
+}
+
+/* remove o "x" de limpar que o navegador põe em type="search" */
+.input::-webkit-search-cancel-button,
+.input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .visuallyHidden {

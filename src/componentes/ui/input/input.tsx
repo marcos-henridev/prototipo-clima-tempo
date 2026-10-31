@@ -26,9 +26,9 @@ export default function Input({
       >
         {label}
       </label>
-      <div className={styles.field}>
+      <div className={cx(styles.field, action != null && styles.comAction)}>
         <input id={id} className={styles.input} {...props} />
-        {action}
+        {action != null && <div className={styles.action}>{action}</div>}
       </div>
     </div>
   );

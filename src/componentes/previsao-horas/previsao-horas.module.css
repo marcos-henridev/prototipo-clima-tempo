@@ -1,0 +1,36 @@
+.lista {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-bottom: 0.4rem;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+}
+
+.hora {
+  display: flex;
+  flex: 0 0 3.6rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.6rem 0.2rem;
+  border: 1px solid #e6edf7;
+  background: #fff;
+  scroll-snap-align: start;
+}
+
+.icone {
+  font-size: 1.4rem;
+}
+
+.temperatura {
+  color: #263d62;
+  font-size: 0.9rem;
+}
+
+.chuva {
+  color: #2563eb;
+  font-size: 0.65rem;
+  white-space: nowrap;
+}

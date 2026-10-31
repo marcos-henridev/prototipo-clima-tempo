@@ -12,6 +12,13 @@ const geoSaoPaulo = {
 
 const climaSaoPaulo = {
   current: { temperature_2m: 22.5, weather_code: 3, is_day: 1 },
+  hourly: {
+    time: ["2026-10-31T17:00", "2026-10-31T18:00"],
+    temperature_2m: [22.1, 20.8],
+    weather_code: [3, 61],
+    is_day: [1, 0],
+    precipitation_probability: [10, null],
+  },
 };
 
 const fetchMock = jest.fn();
@@ -44,6 +51,10 @@ describe("useClima", () => {
       temperatura: 22.5,
       is_day: true,
       codigo: 3,
+      horas: [
+        { hora: "17:00", temperatura: 22.1, codigo: 3, is_day: true, chuva: 10 },
+        { hora: "18:00", temperatura: 20.8, codigo: 61, is_day: false, chuva: null },
+      ],
     });
 
     const [geoUrl] = fetchMock.mock.calls[0];
@@ -52,7 +63,23 @@ describe("useClima", () => {
 
     const [climaUrl] = fetchMock.mock.calls[1];
     expect(climaUrl).toContain("latitude=-23.55");
-    expect(climaUrl).toContain("current=temperature_2m%2Cweather_code%2Cis_day");
+    expect(climaUrl).toContain("current=temperature_2m%2Cweather_code%2Cis_day&");
+    expect(climaUrl).toContain(
+      "hourly=temperature_2m%2Cweather_code%2Cis_day%2Cprecipitation_probability",
+    );
+    expect(climaUrl).toContain("forecast_hours=24");
+  });
+
+  it("usa null na chuva quando a API não manda precipitation_probability", async () => {
+    const hourlySemChuva = { ...climaSaoPaulo.hourly };
+    delete (hourlySemChuva as Partial<typeof hourlySemChuva>).precipitation_probability;
+    fetchMock
+      .mockReturnValueOnce(resposta(geoSaoPaulo))
+      .mockReturnValueOnce(resposta({ ...climaSaoPaulo, hourly: hourlySemChuva }));
+
+    const { result } = renderHook(() => useClima("São Paulo"));
+    await waitFor(() => expect(result.current.dados).not.toBeNull());
+    expect(result.current.dados?.horas.map((h) => h.chuva)).toEqual([null, null]);
   });
 
   it("mostra só o nome quando não há estado (admin1)", async () => {

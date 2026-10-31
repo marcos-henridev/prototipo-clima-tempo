@@ -1,0 +1,39 @@
+.location {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.local {
+  margin-top: 0.35rem;
+}
+
+.periodo {
+  margin-top: 0.2rem;
+}
+
+.icone {
+  font-size: 2.7rem;
+}
+
+.temperatura {
+  padding-top: 1rem;
+}
+
+.temperatura span {
+  font-size: 4.3rem;
+  font-weight: 300;
+  letter-spacing: -0.09em;
+  line-height: 1;
+}
+
+.descricao {
+  margin-top: 0.25rem;
+  color: #45618a;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.erro {
+  color: #b91c1c;
+}
