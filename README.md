@@ -1,5 +1,7 @@
 # Clima Tempo
 
+[![CI](https://github.com/marcos-henridev/prototipo-clima-tempo/actions/workflows/ci.yml/badge.svg)](https://github.com/marcos-henridev/prototipo-clima-tempo/actions/workflows/ci.yml)
+
 App web para consultar o clima atual de uma cidade. Você digita o nome da cidade e ele mostra a temperatura e as condições do tempo naquele momento.
 
 > 🚧 **Em desenvolvimento.** A interface e o hook de busca (`useClima`) estão prontos e testados, mas ainda não foram ligados um ao outro na tela.
@@ -68,3 +70,7 @@ Cada arquivo de teste (`*.test.ts(x)`) fica ao lado do arquivo que ele testa. No
 ```bash
 pnpm test
 ```
+
+## CI
+
+O workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) roda a cada push na `main` e em cada pull request. Ele faz lint, checagem de tipos, testes e build.
