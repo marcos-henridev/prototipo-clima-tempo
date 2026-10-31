@@ -36,7 +36,7 @@ jobs:
         run: pnpm lint
 
       - run: pnpm exec next typegen
-      - run: pnpm exec tsc --noEmit
+     
 
       - name: Checar tipos
         run: pnpm exec tsc --noEmit
