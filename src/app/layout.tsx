@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
+import RegisterSw from "../componentes/app";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -15,7 +16,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className={openSans.variable}>
-      <body>{children}</body>
+      <body>
+        <RegisterSw />
+        {children}
+      </body>
     </html>
   );
 }

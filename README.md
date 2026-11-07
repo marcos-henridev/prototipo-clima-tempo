@@ -39,9 +39,16 @@ Depois, abra [http://localhost:3000](http://localhost:3000).
 ## Estrutura
 
 ```
+public/
+├── sw.js                 # Service worker (cache offline)
+└── IconsManifest/        # Ícones do app (SVG e PNG 192x192) e screenshots
 src/
-├── app/                  # Rotas do Next (layout e página inicial)
+├── app/
+│   ├── layout.tsx        # Layout raiz (registra o service worker)
+│   ├── manifest.ts       # Web App Manifest (PWA)
+│   └── page.tsx          # Página inicial
 ├── componentes/
+│   ├── app.js            # RegisterSw: registra o /sw.js no navegador
 │   ├── home/             # Tela principal
 │   └── ui/               # Componentes reaproveitáveis: Button, Input, Card, Text
 └── data/
@@ -62,6 +69,18 @@ O `useClima(cidade)` faz duas chamadas à Open-Meteo:
 2. **Forecast:** busca a temperatura, o código do tempo (`weather_code`) e se é dia ou noite.
 
 O hook devolve `{ dados, carregando, erro }`. Quando a cidade muda, a busca anterior é cancelada.
+
+## PWA (instalar no celular)
+
+O app pode ser instalado na tela inicial do celular ou do computador.
+
+- **Manifest:** [`src/app/manifest.ts`](src/app/manifest.ts) gera o `/manifest.webmanifest` com nome, cores e ícones (PNG 192x192 para Android e SVG).
+- **Service worker:** [`public/sw.js`](public/sw.js) guarda a página inicial e os ícones em cache, e responde do cache primeiro (cache-first), usando a rede quando o arquivo não está salvo.
+- **Registro:** o componente `RegisterSw` ([`src/componentes/app.js`](src/componentes/app.js)) registra o `/sw.js` quando a página carrega.
+
+O service worker só funciona em `localhost` ou em HTTPS. Para conferir, abra o DevTools → **Application** → **Service Workers**.
+
+> Ao publicar uma mudança importante, aumente a versão em `CACHE_NAME` no `sw.js` (ex.: `clima-tempo-cache-v2`). Assim o cache antigo é apagado e os usuários recebem a versão nova.
 
 ## Testes
 

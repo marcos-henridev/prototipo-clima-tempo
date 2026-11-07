@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4FA8F5"/>
+      <stop offset="1" stop-color="#1B5FD1"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFE259"/>
+      <stop offset="1" stop-color="#FFA41B"/>
+    </linearGradient>
+    <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DCE8F7"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- sun rays -->
+  <g stroke="#FFD23F" stroke-width="18" stroke-linecap="round">
+    <line x1="318" y1="82" x2="318" y2="116"/>
+    <line x1="410" y1="120" x2="386" y2="144"/>
+    <line x1="448" y1="212" x2="414" y2="212"/>
+    <line x1="226" y1="120" x2="250" y2="144"/>
+  </g>
+  <!-- sun -->
+  <circle cx="318" cy="212" r="82" fill="url(#sun)"/>
+  <!-- cloud -->
+  <path d="M150 400
+           a68 68 0 0 1 -6 -135
+           a96 96 0 0 1 184 -18
+           a76 76 0 0 1 28 153
+           z" fill="url(#cloud)"/>
+</svg>
