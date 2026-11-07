@@ -1,10 +1,11 @@
-const CACHE_NAME = "clima-tempo-cache-v1";
+const CACHE_NAME = "clima-tempo-cache-v2";
 const URL_CACHE = [
   "/",
   "/manifest.webmanifest",
   "/IconsManifest/mobile.png",
   "/IconsManifest/desjktop.png",
   "/IconsManifest/icon-192.png",
+  "/IconsManifest/icon.svg",
 ];
 
 //1. install service worker (ideal para cache inicial)

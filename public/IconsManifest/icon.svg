@@ -1,9 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#4FA8F5"/>
-      <stop offset="1" stop-color="#1B5FD1"/>
-    </linearGradient>
     <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#FFE259"/>
       <stop offset="1" stop-color="#FFA41B"/>
@@ -13,7 +9,6 @@
       <stop offset="1" stop-color="#DCE8F7"/>
     </linearGradient>
   </defs>
-  <rect width="512" height="512" fill="url(#bg)"/>
   <!-- sun rays -->
   <g stroke="#FFD23F" stroke-width="18" stroke-linecap="round">
     <line x1="318" y1="82" x2="318" y2="116"/>
